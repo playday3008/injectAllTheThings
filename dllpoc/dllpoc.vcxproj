@@ -69,11 +69,11 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <PostBuildEventUseInBuild>false</PostBuildEventUseInBuild>
+    <PostBuildEventUseInBuild>true</PostBuildEventUseInBuild>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <PostBuildEventUseInBuild>false</PostBuildEventUseInBuild>
+    <PostBuildEventUseInBuild>true</PostBuildEventUseInBuild>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
@@ -96,7 +96,8 @@
     </Link>
     <PostBuildEvent>
       <Command>if not exist $(SolutionDir)bin mkdir $(SolutionDir)bin
-copy $(OutDir)$(TargetFileName) $(SolutionDir)bin\$(TargetName)_$(PlatformArchitecture)$(TargetExt)</Command>
+if not exist $(SolutionDir)bin\$(IntDir) mkdir $(SolutionDir)bin\$(IntDir)
+copy $(OutDir)$(TargetFileName) $(SolutionDir)bin\$(IntDir)$(TargetName)_$(PlatformArchitecture)$(TargetExt)</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -114,7 +115,8 @@ copy $(OutDir)$(TargetFileName) $(SolutionDir)bin\$(TargetName)_$(PlatformArchit
     </Link>
     <PostBuildEvent>
       <Command>if not exist $(SolutionDir)bin mkdir $(SolutionDir)bin
-copy $(OutDir)$(TargetFileName) $(SolutionDir)bin\$(TargetName)_$(PlatformArchitecture)$(TargetExt)</Command>
+if not exist $(SolutionDir)bin\$(IntDir) mkdir $(SolutionDir)bin\$(IntDir)
+copy $(OutDir)$(TargetFileName) $(SolutionDir)bin\$(IntDir)$(TargetName)_$(PlatformArchitecture)$(TargetExt)</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
