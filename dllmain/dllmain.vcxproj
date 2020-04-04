@@ -95,7 +95,7 @@
     </Link>
     <PostBuildEvent>
       <Command>if not exist $(SolutionDir)bin mkdir $(SolutionDir)bin
-copy $(OutDir)$(TargetFileName) $(SolutionDir)bin\$(TargetName)_32.dll</Command>
+copy $(OutDir)$(TargetFileName) $(SolutionDir)bin\$(TargetName)_$(PlatformArchitecture)$(TargetExt)</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -112,7 +112,7 @@ copy $(OutDir)$(TargetFileName) $(SolutionDir)bin\$(TargetName)_32.dll</Command>
     </Link>
     <PostBuildEvent>
       <Command>if not exist $(SolutionDir)bin mkdir $(SolutionDir)bin
-copy $(OutDir)$(TargetFileName) $(SolutionDir)bin\$(TargetName)_64.dll</Command>
+copy $(OutDir)$(TargetFileName) $(SolutionDir)bin\$(TargetName)_$(PlatformArchitecture)$(TargetExt)</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -133,7 +133,7 @@ copy $(OutDir)$(TargetFileName) $(SolutionDir)bin\$(TargetName)_64.dll</Command>
     </Link>
     <PostBuildEvent>
       <Command>if not exist $(SolutionDir)bin mkdir $(SolutionDir)bin
-copy $(OutDir)$(TargetFileName) $(SolutionDir)bin\$(TargetName)_32.dll</Command>
+copy $(OutDir)$(TargetFileName) $(SolutionDir)bin\$(TargetName)_$(PlatformArchitecture)$(TargetExt)</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -154,7 +154,7 @@ copy $(OutDir)$(TargetFileName) $(SolutionDir)bin\$(TargetName)_32.dll</Command>
     </Link>
     <PostBuildEvent>
       <Command>if not exist $(SolutionDir)bin mkdir $(SolutionDir)bin
-copy $(OutDir)$(TargetFileName) $(SolutionDir)bin\$(TargetName)_64.dll</Command>
+copy $(OutDir)$(TargetFileName) $(SolutionDir)bin\$(TargetName)_$(PlatformArchitecture)$(TargetExt)</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>

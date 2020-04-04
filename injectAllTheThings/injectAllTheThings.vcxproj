@@ -69,9 +69,11 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
+    <PostBuildEventUseInBuild>false</PostBuildEventUseInBuild>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
+    <PostBuildEventUseInBuild>false</PostBuildEventUseInBuild>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
@@ -93,7 +95,8 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <PostBuildEvent>
-      <Command>copy ..\Debug\injectAllTheThings.exe ..\bin\injectAllTheThings_32.exe</Command>
+      <Command>if not exist $(SolutionDir)bin mkdir $(SolutionDir)bin
+copy $(OutDir)$(TargetFileName) $(SolutionDir)bin\$(TargetName)_$(PlatformArchitecture)$(TargetExt)</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -110,7 +113,8 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <PostBuildEvent>
-      <Command>copy ..\x64\Debug\injectAllTheThings.exe ..\bin\injectAllTheThings_64.exe</Command>
+      <Command>if not exist $(SolutionDir)bin mkdir $(SolutionDir)bin
+copy $(OutDir)$(TargetFileName) $(SolutionDir)bin\$(TargetName)_$(PlatformArchitecture)$(TargetExt)</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -131,7 +135,8 @@
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
     <PostBuildEvent>
-      <Command>copy ..\Release\injectAllTheThings.exe ..\bin\injectAllTheThings_32.exe</Command>
+      <Command>if not exist $(SolutionDir)bin mkdir $(SolutionDir)bin
+copy $(OutDir)$(TargetFileName) $(SolutionDir)bin\$(TargetName)_$(PlatformArchitecture)$(TargetExt)</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -152,7 +157,8 @@
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
     <PostBuildEvent>
-      <Command>copy ..\x64\Release\injectAllTheThings.exe ..\bin\injectAllTheThings_64.exe</Command>
+      <Command>if not exist $(SolutionDir)bin mkdir $(SolutionDir)bin
+copy $(OutDir)$(TargetFileName) $(SolutionDir)bin\$(TargetName)_$(PlatformArchitecture)$(TargetExt)</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
