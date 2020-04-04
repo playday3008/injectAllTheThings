@@ -113,8 +113,8 @@ copy $(OutDir)$(TargetFileName) $(SolutionDir)bin\$(IntDir)$(TargetName)_$(Platf
     </Link>
     <PostBuildEvent>
       <Command>if not exist $(SolutionDir)bin mkdir $(SolutionDir)bin
-if not exist $(SolutionDir)bin\$(IntDir) mkdir $(SolutionDir)bin\$(IntDir)
-copy $(OutDir)$(TargetFileName) $(SolutionDir)bin\$(IntDir)$(TargetName)_$(PlatformArchitecture)$(TargetExt)</Command>
+if not exist $(SolutionDir)bin\$(Configuration)\$(Platform) mkdir $(SolutionDir)bin\$(Configuration)\$(Platform)
+copy $(OutDir)$(TargetFileName) $(SolutionDir)bin\$(Configuration)\$(Platform)\$(TargetName)_$(PlatformArchitecture)$(TargetExt)</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -155,8 +155,8 @@ copy $(OutDir)$(TargetFileName) $(SolutionDir)bin\$(TargetName)_$(PlatformArchit
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
     <PostBuildEvent>
-      <Command>if not exist $(SolutionDir)bin mkdir $(SolutionDir)bin
-copy $(OutDir)$(TargetFileName) $(SolutionDir)bin\$(TargetName)_$(PlatformArchitecture)$(TargetExt)</Command>
+      <Command>if not exist $(SolutionDir)bin\$(Platform) mkdir $(SolutionDir)bin\$(Platform)
+copy $(OutDir)$(TargetFileName) $(SolutionDir)bin\$(Platform)\$(TargetName)_$(PlatformArchitecture)$(TargetExt)</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
