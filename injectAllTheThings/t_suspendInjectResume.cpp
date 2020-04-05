@@ -146,12 +146,14 @@ unsigned char sc[] = {
 DWORD demoSuspendInjectResume64(PCWSTR pszLibFile, DWORD dwProcessId)
 {
 	void *stub;
+#pragma warning(disable:4101)
 	unsigned long threadID, oldprot;
+#pragma warning(default:4101)
 	HANDLE hThread;
 	CONTEXT ctx;
 
 	DWORD64 stubLen = sizeof(sc);
-	wprintf(TEXT("[+] Shellcode Length is: %d\n"), stubLen);
+	wprintf(TEXT("[+] Shellcode Length is: %I64d\n"), stubLen);
 
 	HANDLE hProcess = OpenProcess(PROCESS_ALL_ACCESS, FALSE, dwProcessId);
 	if (hProcess == NULL)
