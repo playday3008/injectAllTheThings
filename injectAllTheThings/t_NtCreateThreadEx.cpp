@@ -84,7 +84,7 @@ DWORD demoNtCreateThreadEx(PCWSTR pszLibFile, DWORD dwProcessId)
 			);
 
 #ifdef _DEBUG
-		wprintf(TEXT("[+] Status: %s\n"), status);
+		wprintf(TEXT("[+] Status: 0x%x\n"), status);
 #endif
 		if (status != NULL)		// FIXME: always returns NULL even when it suceeds. Go figure.
 		{

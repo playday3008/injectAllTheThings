@@ -56,25 +56,25 @@ DWORD demoReflectiveDllInjection(PCWSTR cpDllFile, DWORD dwProcessId)
 	do
 	{
 		hFile = CreateFileW(cpDllFile, GENERIC_READ, 0, NULL, OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, NULL);
-		if (hFile == INVALID_HANDLE_VALUE) BREAK_WITH_ERROR("[-] Failed to open the DLL file!");
+		if (hFile == INVALID_HANDLE_VALUE) BREAK_WITH_ERROR(L"[-] Failed to open the DLL file!");
 
 		dwLength = GetFileSize(hFile, NULL);
-		if (dwLength == INVALID_FILE_SIZE || dwLength == 0) BREAK_WITH_ERROR("[-] Failed to get the DLL file size!");
+		if (dwLength == INVALID_FILE_SIZE || dwLength == 0) BREAK_WITH_ERROR(L"[-] Failed to get the DLL file size!");
 
 #ifdef _DEBUG
 		wprintf(TEXT("[+] File Size: %d\n"), dwLength);
 #endif
 
 		lpBuffer = HeapAlloc(GetProcessHeap(), 0, dwLength);
-		if (!lpBuffer) BREAK_WITH_ERROR("[-] Failed to get the DLL file size!");
+		if (!lpBuffer) BREAK_WITH_ERROR(L"[-] Failed to get the DLL file size!");
 
-		if (ReadFile(hFile, lpBuffer, dwLength, &dwBytesRead, NULL) == FALSE) BREAK_WITH_ERROR("[-] Failed to alloc a buffer!");
+		if (ReadFile(hFile, lpBuffer, dwLength, &dwBytesRead, NULL) == FALSE) BREAK_WITH_ERROR(L"[-] Failed to alloc a buffer!");
 
 		hProcess = OpenProcess(PROCESS_CREATE_THREAD | PROCESS_QUERY_INFORMATION | PROCESS_VM_OPERATION | PROCESS_VM_WRITE | PROCESS_VM_READ, FALSE, dwProcessId);
-		if (!hProcess) BREAK_WITH_ERROR("[-] Failed to open the target process!");
+		if (!hProcess) BREAK_WITH_ERROR(L"[-] Failed to open the target process!");
 
 		hModule = LoadRemoteLibraryR(hProcess, lpBuffer, dwLength, NULL);
-		if (!hModule) BREAK_WITH_ERROR("[-] Failed to inject the DLL!");
+		if (!hModule) BREAK_WITH_ERROR(L"[-] Failed to inject the DLL!");
 
 		wprintf(TEXT("[+] Injected '%s' into process ID %d!"), cpDllFile, dwProcessId);
 
